@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>PWC</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="icon" type="image/x-icon" href="images/PWC.svg">
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<header id="header" class="alt">
+		<span class="logo"><img src="images/PWC.svg" alt="" /></span>
+		<h1>Assessment's Website</h1>
+		<p>
+			Ultimate Assessment Goal: Build a web application that allows users to search for a specified city on a map using any technology.
+		</p>
+	</header>
+
+
+	<!-- MAP SECTION -->
+	<div id="main"> 
+		<section id="first" class="main special">
+			<h1>Map</h1>
+			<div>
+				<input id="search-key" type="text" />
+			</div>
+			<p></p>
+			<div>
+				<button id="search-go">FIND</button>
+			</div>
+			<p></p>
+			<iframe id="map-container"
+					width="600"
+					height="450"
+					tabindex="0"
+					style="border:0"
+					loading="lazy"
+					allowfullscreen
+					referrerpolicy="no-referrer-when-downgrade"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.1774260663838!2d35.90571231509026!3d31.956082981227627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca07b904242ad%3A0x346e4b4af52a116c!2sPricewaterhouseCoopers%20Jordan%20(PwC)!5e0!3m2!1sen!2sjo!4v1672828350451!5m2!1sen!2sjo">
+			</iframe>
+		</section>
+
+
+		<!-- ABOUT SECTION -->
+		<section id="second" class="main special">
+			<header class="major">
+				<h2>About</h2>
+				<p>With offices in 152 countries and almost 328,000 people, we are among the leading professional services networks in the world. We help organisations and individuals create the value they are looking for, by delivering quality in Assurance, Tax and Advisory services. </p>
+			</header>
+		</section>
+	</div>
+
+
+	<!-- FOOTER SECTION -->
+	<div>
+		<footer id="footer">
+			<section>
+				<h2>Contact Us</</h2>
+				<dl></dl>
+				<dl class="alt">
+					<dt>Address</dt>
+					<dd>
+						PricewaterhouseCoopers
+						Third Circle, Jabal Amman, 14 Hazza' Al Majali St. | PO Box 5175, Amman 11183, Jordan
+					</dd>
+					<dt>Phone</dt>
+					<dd>(+962) 778465742</dd>
+					<dt>Email</dt>
+					<dd><a href="#">ContactUs@pwc.com</a></dd>
+				</dl>
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+				</ul>
+			</section>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		var mapConfig = {
+			apiKey: 'AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8',
+			googleMapLocation: 'https://www.google.com/maps/embed/v1/place',
+			googleMapSearch: 'https://www.google.com/maps/embed/v1/search',
+		};
+
+		function buildGoogleMap(elementId) {
+			let domain = 'https://www.google.com/maps/embed/v1/search';
+			let apiKey = 'key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8';
+			let q = 'q=31.9027153,35.8463745';
+			$(`#${elementId}`).attr('src', `${domain}?${q}&${apiKey}`);
+		}
+
+		function buildGoogleMapWithSearch(q) {
+			let src = `${mapConfig.googleMapSearch}?key=${mapConfig.apiKey}&q=${q}`;
+			$("#map-container").attr('src', src);
+		}
+
+		$('#search-go').click(function () {
+			var searchWord = $("#search-key").val();
+
+			if (searchWord == '')
+				alert("Please fill in the box before searching.")
+			else buildGoogleMapWithSearch(searchWord) 
+			});
+	</script>
+</body>
+</html>
